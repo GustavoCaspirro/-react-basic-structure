@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import Button from '../../components/Button';
+
+const style = { 
+    backgroundColor: 'black'
+};
+
 class Search extends Component {
     constructor() {
-        super(); // ele importa tudo que está na classe pai (neste caso Component)
+        super();
 
         this.state = {
-            results:[],
+            results: [],
         };
     }
+
     onSearch = (event) => {
-        //console.log("Valor:", event.currentTarget.value);
-        //const valueInputSearch = event.currentTarget.value;
         const { value } = event.currentTarget;
 
-        if(value.length >= 3) {
-            axios.get(`https://api.mercadolibre.com/sites/MLB/search?q=${value}`)
+        axios.get(`https://api.mercadolibre.com/sites/MLB/search?q=${value}`)
             .then(({ data }) => {
-                // handle success
-                //console.log(data);
+                
                 this.setState({
                     results: data.results,
                 });
@@ -26,25 +29,29 @@ class Search extends Component {
             .catch((error) => {
                 // handle error
                 console.log(error);
-            })
-        }
+            });
     }
 
     renderItem(item) {
         return (
-            <li key={ item.id }>
+            <li key={ `item_${item.id}` }>
                 { item.title }
+                <Button 
+                    label="Abrir o produto" 
+                    to={ `/product/${item.id}` }
+                    style={ style }
+                />
             </li>
         );
     }
 
     render() {
-        return(
+        return (
             <div>
-                <input type="text" onChange={ this.onSearch }/>
+                <input type="text" onChange={ this.onSearch } />
 
                 <ul>
-                    { this.state.results.map(this.renderItem) }
+                    { this.state.results.map(this.renderItem)  }
                 </ul>
             </div>
         );

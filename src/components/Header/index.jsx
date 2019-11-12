@@ -5,11 +5,11 @@ import './style.css';
 
 const Header = (props) => {
     return (
-        <header>
-            <h1 className="title">{ props.title }</h1>
-            <img src={ logo } alt="Logo"/>
+        <header className="header">
+            <h1>{ props.title }</h1>
+            <img src={ logo } />
         </header>
-    )
-}
+    );
+};
 
 export default Header;

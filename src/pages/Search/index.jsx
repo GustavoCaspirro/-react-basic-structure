@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
 import Button from '../../components/Button';
+import './search.css';
 
-const style = { 
-    backgroundColor: 'black'
-};
+// const style = {
+//     backgroundColor: 'black'
+// };
 
 class Search extends Component {
     constructor() {
@@ -39,7 +39,8 @@ class Search extends Component {
                 <Button 
                     label="Abrir o produto" 
                     to={ `/product/${item.id}` }
-                    style={ style }
+                    // style={ style }
+                    class="btn-go-product"
                 />
             </li>
         );
@@ -48,7 +49,11 @@ class Search extends Component {
     render() {
         return (
             <div>
-                <input type="text" onChange={ this.onSearch } />
+                <input
+                    type="text"
+                    onChange={ this.onSearch }
+                    placeholder="Buscar produtos, marcas e muito mais…"
+                />
 
                 <ul>
                     { this.state.results.map(this.renderItem)  }

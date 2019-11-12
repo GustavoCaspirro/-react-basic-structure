@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './button.css';
 
 const Button = ({ href, label, to, handleClick, ...props }) => {
     if (href.length) {

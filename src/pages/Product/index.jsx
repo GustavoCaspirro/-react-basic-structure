@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
 import Loading from '../../components/Loading';
 
 class Product extends Component {
@@ -26,7 +25,7 @@ class Product extends Component {
 
     render() {
         if ( this.state.active ) {
-            return <Loading className="leandro-testando" style={{ color: 'black' }} />;
+            return <Loading style={{ color: 'black' }} />;
         }
 
         return (<div>
